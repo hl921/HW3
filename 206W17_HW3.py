@@ -22,7 +22,7 @@ import re
 
 def parse_counted_words(s):
     # m = re.findall("[0-9]+\s+\w+", s)
-    k = re.findall("([0-9]+)+\s+(\w+)", s)
+    k = re.findall("([0-9]+)\s(.\w[a-z]+)", s)
 
     #word should include hashtag but should not be numbers
     try:
@@ -41,34 +41,48 @@ def parse_counted_words(s):
 f = open("computer_paths.txt","r")
 r = f.readlines()
 
+
 ## (a) Write Python code to determine how many of these paths identify FILES, not directories. Save that number in the variable file_paths_num.
 
-file_paths_num = 0
-for x in r:
-    if "py" in x:
-        file_paths_num += 1
-    elif "xlsx" in x:
-        file_paths_num += 1
-    elif "docx" in x:
-        file_paths_num += 1
-    elif "jpg" in x:
-        file_paths_num += 1
 
-print (file_paths_num)
+lul = []
+for x in r:
+    if (re.findall("\.\w[a-z]+", x)):
+        lul.append(x)
+
+file_paths_num = len(lul)
+# print (file_paths_num)
 
 ## (b) Write Python code to determine how many of these paths are FULL paths, not relative paths. Save that number in the variable full_paths_num.
-full_paths_num = 0
+
+list1 = []
+for x in r:
+    if (re.findall("^[~]?/", x)):
+        list1.append(x)
+
+full_paths_num = len(list1)
+# print(full_paths_num)
+
+
 
 ## (c) Write Python code to determine how many of these paths describe a Python file saved inside a folder called SI206. Save that number in the variable python_course_paths.
 python_course_paths = 0
 for x in r:
     if "SI206" in x and "py" in x:
         python_course_paths += 1
-print (python_course_paths)
+# print (python_course_paths)
 
 ## (d) Write Python code to determine how many of these paths describe a Microsoft file (a file that EITHER ends with .docx OR .xlsx, but nothing else counts) where the file name ends in a digit. Save that total in the variable microsoft_files_num.
 
 
+l = []
+for x in r:
+    if (re.findall("[0-9].xlsx", x)):
+        l.append(x)
+    elif (re.findall("[0-9].docx",x)):
+        l.append(x)
+microsoft_files_num = len(l)
+# print (microsoft_files_num)
 
 
 
