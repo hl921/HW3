@@ -38,7 +38,23 @@ def parse_counted_words(s):
 
 ## We have provided a text file computer_paths.txt. It's not incredibly long -- you can scan through it, but do NOT hard code your answers! Each line contains 1 filesystem path.
 
+f = open("computer_paths.txt","r")
+r = f.readlines()
+
 ## (a) Write Python code to determine how many of these paths identify FILES, not directories. Save that number in the variable file_paths_num.
+
+file_paths_num = 0
+for x in r:
+    if "py" in x:
+        file_paths_num += 1
+    elif "xlsx" in x:
+        file_paths_num += 1
+    elif "docx" in x:
+        file_paths_num += 1
+    elif "jpg" in x:
+        file_paths_num += 1
+
+print (file_paths_num)
 
 ## (b) Write Python code to determine how many of these paths are FULL paths, not relative paths. Save that number in the variable full_paths_num.
 
