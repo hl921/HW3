@@ -21,7 +21,7 @@ import re
 ## Write code to define your parse_counted_words function here.
 
 def parse_counted_words(s):
-    m = re.findall("[0-9]+\s+\w+", s)
+    # m = re.findall("[0-9]+\s+\w+", s)
     k = re.findall("([0-9]+)+\s+(\w+)", s)
 
     #word should include hashtag but should not be numbers
